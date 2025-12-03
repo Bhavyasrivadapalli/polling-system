@@ -1,9 +1,11 @@
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:4000");
+const socket = io("https://polling-system-jeho.onrender.com", {
+  transports: ["websocket"],   // 🚀 mandatory for Render
+  withCredentials: false,
+});
 
-// ⭐ VERY IMPORTANT FIX
-// Save our socket.id so ParticipantsBox can identify who is "You"
+// save socket id
 socket.on("connect", () => {
   localStorage.setItem("socketId", socket.id);
 });

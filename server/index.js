@@ -14,8 +14,14 @@ const server = http.createServer(app);
 
 // socket.io setup
 const io = new Server(server, {
-  cors: { origin: "*" },
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["*"],
+    credentials: true
+  }
 });
+
 
 // In-memory Poll DB
 // poll = {
