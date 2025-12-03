@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Teacher from "./pages/Teacher/Teacher";
 import Student from "./pages/Student/Student";
-import AddQuestion from "./pages/teacher/AddQuestion";
+import AddQuestion from "./pages/Teacher/AddQuestion";
 
 function App() {
   return (
