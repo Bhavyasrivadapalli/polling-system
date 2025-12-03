@@ -1,0 +1,138 @@
+/* ------------------------------
+   GLOBAL FONTS & RESET
+--------------------------------*/
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F2F2F2;
+  font-family: "Inter", sans-serif;
+}
+
+/* Fix centering for full app */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* or center */
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Remove default button highlight */
+button, input {
+  outline: none;
+}
+
+/* ------------------------------
+   CONTAINER + LAYOUT
+--------------------------------*/
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 50px;
+}
+
+/* Main card */
+.card {
+  width: 480px;
+  background: #FFFFFF;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* ------------------------------
+   TEXT STYLES
+--------------------------------*/
+h1, h2, h3, h4 {
+  margin: 0 0 10px 0;
+  color: #373737;
+  font-weight: 600;
+}
+
+p {
+  color: #6E6E6E;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* ------------------------------
+   INPUT FIELDS
+--------------------------------*/
+.input-box {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* ------------------------------
+   PRIMARY BUTTON (Purple)
+--------------------------------*/
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4F0DCE;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #7765DA;
+}
+
+/* ------------------------------
+   QUESTION CARD
+--------------------------------*/
+.question-card {
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #E0E0E0;
+  margin-bottom: 14px;
+}
+
+/* Active indication */
+.active-badge {
+  color: #4F0DCE;
+  font-weight: bold;
+}
+
+/* ------------------------------
+   OPTION STYLES FOR STUDENT
+--------------------------------*/
+.option-box {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option-box:hover {
+  background-color: #F4F0CE;
+}
+
+.option-selected {
+  background-color: #E6E0FA;
+  border-color: #4F0DCE;
+}
+
+/* ------------------------------
+   RESULT BLOCK
+--------------------------------*/
+.result-block {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #F4F0CE;
+  font-weight: 600;
+}

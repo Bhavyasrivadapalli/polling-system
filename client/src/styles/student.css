@@ -1,0 +1,582 @@
+/* Page layout */
+.student-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* FIGMA STYLE QUESTION CARD */
+.figma-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+.figma-question-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.figma-question-box {
+  background: #2b2b2b;
+  color: white;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* META (Question + Timer row) */
+.figma-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  padding: 0 5px;
+}
+
+.q-number {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.figma-timer {
+  font-size: 15px;
+  font-weight: 600;
+  color: #d62828;
+}
+
+/* FIGMA OPTION CARD */
+.figma-option {
+  width: 100%;
+  background: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.figma-option-selected {
+  background: #ede5ff;
+  border: 2px solid #6d4aff;
+}
+
+.figma-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.figma-bullet {
+  font-size: 20px;
+  color: #444;
+}
+
+.figma-bullet-active {
+  color: #6d4aff;
+  font-size: 22px;
+}
+
+.figma-option-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Submit button */
+.figma-submit-btn {
+  margin-top: 20px;
+  background: #6d4aff;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.figma-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* RESULTS */
+.result-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+
+.result-label {
+  width: 120px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.result-bar {
+  flex: 1;
+  background: #eaeaea;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.result-fill {
+  height: 100%;
+  background: #6d4aff;
+}
+
+.result-percent {
+  width: 50px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.post-results-note {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 600;
+  color: #444;
+}
+
+/* WAITING SCREEN */
+.student-waiting {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.waiting-spinner {
+  font-size: 40px;
+  color: #6d4aff;
+  margin: 20px 0;
+}
+
+.waiting-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* CHAT BUTTON */
+.floating-chat-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #6d4aff;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 22px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Popup box */
+.popup-box {
+  position: fixed;
+  bottom: 95px;
+  right: 30px;
+  width: 320px;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.tabs span {
+  cursor: pointer;
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.tabs .active {
+  background: #6d4aff;
+  color: white;
+}
+/* ------------------------------
+   STUDENT ENTRY PAGE (FIGMA STYLE)
+--------------------------------*/
+.student-entry-container {
+  width: 100%;
+  max-width: 550px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.entry-badge {
+  background: #4F0DCE;
+  color: white;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.entry-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.entry-purple {
+  color: #4F0DCE;
+}
+
+.entry-sub {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+.entry-form {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.entry-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.entry-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.entry-btn {
+  background: linear-gradient(to right, #7765DA, #4F0DCE);
+  color: white;
+  width: 160px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ------------------------- */
+/* Figma Style Waiting Screen */
+/* ------------------------- */
+
+.badge-figma {
+  display: inline-block;
+  background: linear-gradient(135deg, #7b2ff7, #9f44ff);
+  padding: 6px 14px;
+  border-radius: 18px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.figma-wait-spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #e3d7ff;
+  border-top-color: #7b2ff7;
+  border-radius: 50%;
+  margin: 10px auto 18px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.figma-wait-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+/* FULL CARD */
+.fullcard {
+  width: 100%;
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  margin-bottom: 22px;
+}
+
+/* HEADER */
+.fullcard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.fullcard-qnum {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.fullcard-timer {
+  font-size: 16px;
+  font-weight: 700;
+  color: #d62828;
+}
+
+/* DARK QUESTION BOX */
+.fullcard-question {
+  background: #2e2e2e;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* OPTIONS */
+.big-options-container {
+  margin-top: 18px;
+}
+
+.big-option {
+  background: #f5f5f5;
+  border: 1px solid #dadada;
+  padding: 14px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  transition: .2s;
+}
+
+.big-option-selected {
+  background: #f0e8ff;
+  border: 2px solid #6d4aff;
+}
+
+.big-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.big-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #444;
+}
+
+.big-number-active {
+  background: #6d4aff;
+  color: white;
+}
+
+.big-option-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* SUBMIT BUTTON */
+.fullcard-submit-wrap {
+  text-align: right;
+  margin-top: 18px;
+}
+
+.fullcard-submit {
+  background: #6d4aff;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fullcard-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.figma-main-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+.figma-header-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.figma-q-label {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.figma-q-timer {
+  color: #ff3b3b;
+  font-weight: 600;
+}
+
+.figma-question-box {
+  background: #2b2b2b;
+  color: white;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+/* ------------------------------
+   RESULTS PAGE UI (Figma Style)
+--------------------------------*/
+
+.results-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+/* Main results card */
+.results-card {
+  width: 80%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+  padding: 20px 25px;
+}
+
+/* Question Header */
+.results-header {
+  background: #ececec;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.results-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Entire options list */
+.results-options {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Each row */
+.results-option-row {
+  display: grid;
+  grid-template-columns: 1fr 3fr 40px;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Option label */
+.results-option-label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Bar container */
+.results-bar {
+  background: #f0f0f0;
+  height: 32px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bar fill */
+.results-bar-fill {
+  background: #6A5AE0; /* purple */
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.8s ease;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  padding-right: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Percent at end */
+.results-percent {
+  text-align: right;
+  font-weight: 600;
+  color: #333;
+}
+
+.floating-chat-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  background: #6A5AE0;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+.popup-box {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+  padding: 10px;
+  z-index: 1000;
+}
+

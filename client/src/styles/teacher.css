@@ -1,0 +1,503 @@
+/* src/styles/teacher.css */
+
+/* ---------- variables ---------- */
+:root{
+  --bg: #ffffff;
+  --muted: #6E6E6E;
+  --accent: #6F5CE8;        /* main purple */
+  --accent-dark: #4F0DCE;   /* deeper purple */
+  --card-border: rgba(111,92,232,0.15);
+  --shadow: 0 8px 24px rgba(16,16,16,0.08);
+  --glass: rgba(16,16,16,0.03);
+  --rounded-lg: 12px;
+  --rounded-pill: 999px;
+  --font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* ---------- page layout ---------- */
+.teacher-container{
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: var(--font-family);
+  color: #111;
+  position: relative;
+  min-height: 80vh;
+  background: var(--bg);
+}
+
+/* Top-right history button */
+.top-right{
+  position: absolute;
+  right: 28px;
+  top: 24px;
+}
+.history-btn{
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 28px;
+  box-shadow: 0 6px 18px rgba(111,92,232,0.18);
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- Question card (Figma main area) ---------- */
+.question-card{
+  width: 100%;
+  background: white;
+  border-radius: var(--rounded-lg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin: 48px 0 24px;
+}
+
+/* small "Question" heading like screenshot */
+.question-card > h2{
+  font-size: 18px;
+  margin: 4px 0 12px;
+  font-weight: 700;
+}
+
+/* question title bar (dark rounded header) */
+.question-title{
+  background: linear-gradient(180deg, #4A4A4A, #2F2F2F);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  max-width: 100%;
+  box-shadow: inset 0 -6px 14px rgba(0,0,0,0.08);
+}
+
+/* wrapper for options */
+.options-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+/* ---------- Option bar ---------- */
+.option-bar{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f6f6f8;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(111,92,232,0.05);
+  position: relative;
+}
+
+/* left: circle icon and text */
+.option-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width: 180px;
+  z-index: 3;
+}
+.circle-icon{
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid rgba(111,92,232,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color: var(--accent-dark);
+  box-shadow: 0 2px 8px rgba(111,92,232,0.06);
+}
+
+/* the progress container (fills center) */
+.progress{
+  position: relative;
+  flex: 1;
+  height: 34px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(16,16,16,0.03);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* the fill (purple) */
+.progress-fill{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(111,92,232,0.98), rgba(127,102,240,0.95));
+  border-radius: 8px 0 0 8px;
+  transition: width 700ms cubic-bezier(.2,.8,.2,1);
+  box-shadow: 0 6px 12px rgba(111,92,232,0.12);
+}
+
+/* percent label on right */
+.percent-label{
+  min-width: 54px;
+  text-align: right;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+/* ---------- Ask a new question button (big pill) ---------- */
+.ask-btn-container{
+  display:flex;
+  justify-content:center;
+  margin-top: 18px;
+  margin-bottom: 36px;
+}
+.ask-btn{
+  background: linear-gradient(90deg, rgba(111,92,232,0.98), rgba(127,102,240,0.95));
+  color: white;
+  padding: 14px 28px;
+  border-radius: 28px;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(111,92,232,0.12);
+  cursor: pointer;
+}
+
+/* ---------- Setup section (create/join + question list) ---------- */
+.setup-section{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 12px;
+}
+.card{
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+}
+.card h3{
+  margin-top: 0;
+}
+
+/* smaller list style when showing questions */
+.question-card-list{
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fafafa;
+  border: 1px solid rgba(16,16,16,0.03);
+}
+
+/* input and button styles used in your existing UI */
+.input-box{
+  display:block;
+  width:100%;
+  padding:10px 12px;
+  border-radius: 8px;
+  border:1px solid rgba(16,16,16,0.06);
+  margin: 10px 0 14px;
+  font-size: 14px;
+}
+.btn-primary{
+  background: var(--accent);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border:none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ---------- Floating chat button ---------- */
+.floating-chat-btn{
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 14px 40px rgba(111,92,232,0.22);
+  cursor: pointer;
+  z-index: 1200;
+  transition: transform 160ms ease;
+}
+.floating-chat-btn:hover{ transform: translateY(-4px); }
+
+/* ---------- Popup box (chat/participants) ---------- */
+.popup-box{
+  position: fixed;
+  right: 100px;
+  bottom: 28px;
+  width: 320px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid rgba(16,16,16,0.06);
+  box-shadow: 0 20px 60px rgba(10,10,10,0.12);
+  z-index: 1250;
+  overflow: hidden;
+}
+
+/* Tabs */
+.popup-box .tabs{
+  display:flex;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(16,16,16,0.03);
+}
+.popup-box .tabs span{
+  font-weight: 700;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: var(--muted);
+}
+.popup-box .tabs span.active{
+  color: var(--accent-dark);
+  border-bottom: 3px solid var(--accent);
+}
+
+/* chat box contents */
+.chat-box{
+  padding: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.sender{
+  font-size: 12px;
+  margin: 8px 0 4px;
+  color: var(--muted);
+}
+
+/* chat bubbles */
+.bubble{
+  display: inline-block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  max-width: 85%;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.bubble.dark{
+  background: #111;
+  color: white;
+  align-self: flex-start;
+  border-radius: 12px 12px 12px 4px;
+}
+.bubble.purple{
+  background: linear-gradient(90deg, rgba(111,92,232,0.95), rgba(127,102,240,0.9));
+  color: white;
+  align-self: flex-end;
+  border-radius: 12px 12px 4px 12px;
+}
+
+/* participants box */
+.participants-box{
+  padding: 12px;
+}
+.participants-box table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.participants-box th{
+  text-align: left;
+  color: var(--muted);
+  font-weight: 700;
+  padding-bottom: 8px;
+}
+.participants-box td{
+  padding: 8px 4px;
+  border-bottom: 1px dashed rgba(16,16,16,0.04);
+}
+.participants-box .kick{
+  color: #2b6db3;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* small helper: no active question */
+.no-question{
+  text-align: center;
+  padding: 28px;
+  border: 1px dashed rgba(16,16,16,0.04);
+  border-radius: 10px;
+  margin: 28px 0;
+  background: var(--glass);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 920px){
+  .setup-section{ grid-template-columns: 1fr; }
+  .popup-box{ right: 18px; bottom: 86px; width: 300px; }
+  .top-right{ right: 12px; }
+  .teacher-container{ padding: 16px; }
+}
+
+@media (max-width: 480px){
+  .question-title{ font-size: 14px; padding: 10px; }
+  .ask-btn{ padding: 10px 18px; font-size: 14px; }
+  .floating-chat-btn{ right: 16px; bottom: 16px; height: 52px; width: 52px; }
+}
+.history-list{
+  margin-top: 20px;
+}
+
+.history-question-title{
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.teacher-container::-webkit-scrollbar{
+  width: 8px;
+}
+.teacher-container::-webkit-scrollbar-thumb{
+  background: rgba(111,92,232,0.35);
+  border-radius: 20px;
+}
+/* ---------- QUESTION PAGE GRID ---------- */
+
+.question-row {
+  position: relative;
+}
+
+.time-select {
+  position: absolute;
+  right: 0;
+  top: -32px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.question-textarea {
+  width: 100%;
+  height: 140px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  resize: none;
+  font-size: 16px;
+  background: #f7f7f7;
+}
+
+.textarea-count {
+  text-align: right;
+  color: #666;
+  font-size: 14px;
+}
+
+/* ---------- OPTIONS HEADER ---------- */
+
+.options-header {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+/* ---------- OPTION LIST ---------- */
+
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.option-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 180px;
+  align-items: center;
+  gap: 18px;
+}
+
+.option-number {
+  background: var(--accent-dark);
+  color: white;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.option-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 15px;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 15px;
+}
+
+.radio-group input {
+  accent-color: var(--accent-dark);
+}
+
+/* ---------- ADD OPTION BUTTON ---------- */
+
+.add-option-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 1px solid var(--accent-dark);
+  background: transparent;
+  color: var(--accent-dark);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ---------- FOOTER ASK BUTTON ---------- */
+
+.bottom-divider {
+  margin-top: 32px;
+  border-top: 1px solid #eee;
+}
+
+.ask-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+}
+
+.ask-btn {
+  background: linear-gradient(to right, #7765DA, #4F0DCE);
+  color: white;
+  padding: 14px 40px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
