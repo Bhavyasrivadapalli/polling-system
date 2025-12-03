@@ -11,7 +11,7 @@ export default function AddQuestion() {
     { text: "", isCorrect: false },
   ]);
 
-  const backendURL = "http://localhost:4000";
+  const backendURL = "https://polling-system-jeho.onrender.com";
   const pollId = localStorage.getItem("pollId");
 
   const navigate = useNavigate();

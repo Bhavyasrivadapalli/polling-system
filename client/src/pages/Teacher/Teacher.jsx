@@ -27,7 +27,7 @@ export default function Teacher() {
   );
 
   const navigate = useNavigate();
-  const backendURL = "http://localhost:4000";
+  const backendURL = "https://polling-system-jeho.onrender.com";
 
   // -------------------------------------------------
   // SET TEACHER ROLE + NAME (Important)
