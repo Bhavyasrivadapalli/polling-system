@@ -9,7 +9,6 @@ import ChatBox from "../../components/Teacher/ChatBox";
 import ParticipantsBox from "../../components/Teacher/ParticipantsBox";
 
 export default function Student() {
-
   localStorage.setItem("role", "student");
 
   const [name, setName] = useState(
@@ -31,9 +30,6 @@ export default function Student() {
   const [showPopup, setShowPopup] = useState(false);
   const [tab, setTab] = useState("chat");
 
-  // ------------------------------
-  // CHAT STATE
-  // ------------------------------
   const [chatMessages, setChatMessages] = useState(
     JSON.parse(localStorage.getItem("chatMessages") || "[]")
   );
@@ -41,9 +37,9 @@ export default function Student() {
   const pollId = localStorage.getItem("pollId");
   const timerRef = useRef(null);
 
-  // ------------------------------
+  // -------------------------------------------------------
   // CHAT LISTENER
-  // ------------------------------
+  // -------------------------------------------------------
   useEffect(() => {
     socket.off("chatMessage");
 
@@ -59,12 +55,7 @@ export default function Student() {
   }, []);
 
   const sendChatMessage = (text) => {
-    const payload = {
-      name,
-      message: text,
-      pollId,
-    };
-
+    const payload = { name, message: text, pollId };
     socket.emit("chatMessage", payload);
   };
 
@@ -73,13 +64,18 @@ export default function Student() {
     localStorage.removeItem("chatMessages");
   };
 
-  // ------------------------------
-  // SOCKET EVENTS
-  // ------------------------------
+  // -------------------------------------------------------
+  // SOCKET EVENTS / JOIN POLL
+  // -------------------------------------------------------
   useEffect(() => {
     if (!entered || !pollId) return;
 
+    // Student joins poll
     socket.emit("joinPoll", { pollId, role: "student", name });
+
+    // 🔥 CRITICAL FIX: Store student userId for Kick-Out logic
+    sessionStorage.setItem("userId", socket.id);
+    sessionStorage.setItem("role", "student");
 
     setWaiting(true);
 
@@ -146,21 +142,21 @@ export default function Student() {
     };
   }, [entered, pollId, name]);
 
-  // ------------------------------
+  // -------------------------------------------------------
   // ENTER NAME
-  // ------------------------------
+  // -------------------------------------------------------
   const handleContinue = () => {
     if (!name.trim()) return alert("Enter your name");
 
     sessionStorage.setItem("studentName", name.trim());
-    localStorage.setItem("role", "student"); // 🔥 IMPORTANT FIX
+    sessionStorage.setItem("role", "student");
 
     setEntered(true);
   };
 
-  // ------------------------------
+  // -------------------------------------------------------
   // SUBMIT ANSWER
-  // ------------------------------
+  // -------------------------------------------------------
   const submitAnswer = () => {
     if (!question) return;
     if (selected === null) return alert("Choose an option first");
@@ -174,9 +170,9 @@ export default function Student() {
     setSubmitted(true);
   };
 
-  // ------------------------------
+  // -------------------------------------------------------
   // KICKED SCREEN
-  // ------------------------------
+  // -------------------------------------------------------
   if (kicked) {
     return (
       <div className="student-kicked">
@@ -189,9 +185,9 @@ export default function Student() {
     );
   }
 
-  // ------------------------------
+  // -------------------------------------------------------
   // NAME ENTRY SCREEN
-  // ------------------------------
+  // -------------------------------------------------------
   if (!entered) {
     return (
       <div className="student-entry-container">
@@ -221,9 +217,9 @@ export default function Student() {
     );
   }
 
-  // ------------------------------
+  // -------------------------------------------------------
   // WAITING SCREEN
-  // ------------------------------
+  // -------------------------------------------------------
   if (waiting && !question && !results) {
     return (
       <div className="student-waiting">
@@ -251,6 +247,7 @@ export default function Student() {
               >
                 Chat
               </span>
+
               <span
                 className={tab === "participants" ? "active" : ""}
                 onClick={() => setTab("participants")}
@@ -275,9 +272,9 @@ export default function Student() {
     );
   }
 
-  // ------------------------------
+  // -------------------------------------------------------
   // QUESTION SCREEN
-  // ------------------------------
+  // -------------------------------------------------------
   if (question) {
     return (
       <div className="student-container">
@@ -308,9 +305,9 @@ export default function Student() {
     );
   }
 
-  // ------------------------------
+  // -------------------------------------------------------
   // RESULTS SCREEN
-  // ------------------------------
+  // -------------------------------------------------------
   if (results) {
     return (
       <div className="student-container results-wrapper">

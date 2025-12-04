@@ -13,8 +13,17 @@ export default function ParticipantsBox() {
 
   const pollId = localStorage.getItem("pollId");
 
-  // SIMPLE teacher check
-  const isTeacherLocal = localStorage.getItem("role") === "teacher";
+  // --- FINAL & CORRECT ROLE DETECTION ---
+  // Students store userId in sessionStorage
+  // Teacher stores userId in localStorage
+  const userIdLS =
+    sessionStorage.getItem("userId") ||
+    localStorage.getItem("userId") ||
+    "";
+
+  // You are teacher ONLY if your ID matches teacherId from backend
+  const isTeacherLocal =
+    participants.teacherId?.toString() === userIdLS.toString();
 
   const cacheKey = pollId ? `participants_cache_${pollId}` : null;
   const mountedRef = useRef(false);
@@ -36,6 +45,8 @@ export default function ParticipantsBox() {
     }
 
     const handleParticipantsUpdate = (data) => {
+      console.log("RECEIVED PARTICIPANTS:", data);
+
       const normalized = {
         teacherId: data.teacherId ?? null,
         teacherName: data.teacherName ?? data.teacher ?? null,
@@ -66,7 +77,6 @@ export default function ParticipantsBox() {
   }, [pollId, cacheKey]);
 
   const kickStudent = (studentId, studentName) => {
-    // Simple teacher-only protection
     if (!isTeacherLocal) return;
 
     if (!window.confirm(`Kick ${studentName}?`)) return;
@@ -85,6 +95,7 @@ export default function ParticipantsBox() {
         </thead>
 
         <tbody>
+
           {/* Teacher Row */}
           {participants.teacherName && (
             <tr>
@@ -95,10 +106,11 @@ export default function ParticipantsBox() {
             </tr>
           )}
 
-          {/* Students */}
+          {/* Students List */}
           {participants.students.length > 0 ? (
             participants.students.map((s) => {
               const sid = s.id ?? s.studentId ?? s.userId;
+
               return (
                 <tr key={sid}>
                   <td>{s.name}</td>
@@ -130,6 +142,7 @@ export default function ParticipantsBox() {
               </td>
             </tr>
           )}
+
         </tbody>
       </table>
     </div>

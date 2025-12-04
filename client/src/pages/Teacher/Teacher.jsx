@@ -21,7 +21,6 @@ export default function Teacher() {
   const [showPopup, setShowPopup] = useState(false);
   const [tab, setTab] = useState("chat");
 
-  // 💬 chat state (GLOBAL)
   const [chatMessages, setChatMessages] = useState(
     JSON.parse(localStorage.getItem("chatMessages") || "[]")
   );
@@ -34,7 +33,7 @@ export default function Teacher() {
   // -------------------------------------------------
   useEffect(() => {
     localStorage.setItem("teacherName", "Teacher");
-    localStorage.setItem("role", "teacher");  // 🔥 ADDED
+    localStorage.setItem("role", "teacher");
   }, []);
 
   // -------------------------------------------------
@@ -43,6 +42,7 @@ export default function Teacher() {
   useEffect(() => {
     socket.on("pollUpdate", (data) => {
       setPollDetails(data);
+
       const current = data.questions.find((q) => q.active === true);
       setActiveQuestion(current || null);
     });
@@ -65,6 +65,7 @@ export default function Teacher() {
           percent: packet.results[i] || 0,
         })),
       };
+
       setActiveQuestion(null);
       setResults(formatted);
     });
@@ -77,10 +78,10 @@ export default function Teacher() {
   }, []);
 
   // -------------------------------------------------
-  // 💬 CHAT SOCKET LISTENER (works always)
+  // CHAT SOCKET LISTENER
   // -------------------------------------------------
   useEffect(() => {
-    socket.off("chatMessage"); // prevent multiple listeners
+    socket.off("chatMessage");
 
     socket.on("chatMessage", (data) => {
       setChatMessages((prev) => {
@@ -102,7 +103,6 @@ export default function Teacher() {
       message: text,
       pollId,
     };
-
     socket.emit("chatMessage", payload);
   };
 
@@ -127,7 +127,12 @@ export default function Teacher() {
       setPollId(newId);
       localStorage.setItem("pollId", newId);
 
+      // JOIN POLL AS TEACHER
       socket.emit("joinPoll", { pollId: newId, role: "teacher" });
+
+      // 🔥 FIX: STORE TEACHER USER ID
+      localStorage.setItem("userId", socket.id);
+      localStorage.setItem("role", "teacher");
 
       alert("Poll Created Successfully!");
     } catch (err) {
@@ -136,23 +141,33 @@ export default function Teacher() {
     }
   };
 
-  // JOIN Existing Poll
+  // -------------------------------------------------
+  // JOIN EXISTING POLL
+  // -------------------------------------------------
   const joinExistingPoll = () => {
     if (!pollId.trim()) return alert("Enter Poll ID");
 
     socket.emit("joinPoll", { pollId, role: "teacher" });
     localStorage.setItem("pollId", pollId);
 
+    // 🔥 FIX: STORE TEACHER USER ID
+    localStorage.setItem("userId", socket.id);
+    localStorage.setItem("role", "teacher");
+
     alert("Joined Poll Successfully!");
   };
 
+  // -------------------------------------------------
   // START QUESTION
+  // -------------------------------------------------
   const startQuestion = (questionId) => {
     const savedId = localStorage.getItem("pollId");
     socket.emit("startQuestion", { pollId: savedId, questionId });
   };
 
+  // -------------------------------------------------
   // END POLL
+  // -------------------------------------------------
   const endPollForEveryone = () => {
     const savedId = localStorage.getItem("pollId");
     socket.emit("poll-ended", { pollId: savedId });
@@ -165,7 +180,7 @@ export default function Teacher() {
 
   return (
     <div className="teacher-container">
-
+      
       {/* TOP RIGHT */}
       <div className="top-right">
         <button
@@ -198,7 +213,10 @@ export default function Teacher() {
 
       {/* ASK QUESTION BUTTON */}
       <div className="ask-btn-container">
-        <button className="ask-btn" onClick={() => navigate("/teacher/add-question")}>
+        <button
+          className="ask-btn"
+          onClick={() => navigate("/teacher/add-question")}
+        >
           + Ask a new question
         </button>
       </div>
