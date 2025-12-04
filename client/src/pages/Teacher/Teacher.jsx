@@ -179,7 +179,13 @@ export default function Teacher() {
     <div className="teacher-container">
       
       {/* TOP RIGHT */}
-    
+    <div className="instructions-header">
+  <div className="instructions-badge">⭐ Intervue Poll</div>
+  <h2 className="instructions-title">
+    Let’s <span>Get Started</span>
+  </h2>
+</div>
+
 
       {/* 🔥 INSTRUCTIONS CARD */}
       <div className="instructions-card">

@@ -508,8 +508,12 @@
   max-width: 600px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-  /* NEW: Purple border on all sides */
-  border: 4px solid #6a5acd;
+  /* Purple borders only on left & right */
+  border-left: 5px solid #6a5acd;
+  border-right: 5px solid #6a5acd;
+
+  border-top: none;
+  border-bottom: none;
 
   animation: fadeIn 0.4s ease;
 }
@@ -535,6 +539,31 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
+}
+.instructions-badge {
+  display: inline-block;
+  background: #5a22dd;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(90, 34, 221, 0.25);
+}
+.instructions-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 5px 0 15px 0;
+  color: #222;
+}
+
+.instructions-title span {
+  color: #5a22dd; /* Purple highlight */
+}
+.instructions-header {
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 
