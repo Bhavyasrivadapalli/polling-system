@@ -540,6 +540,13 @@
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.instructions-header {
+  text-align: center;   /* Centers everything inside */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Centered purple badge */
 .instructions-badge {
   display: inline-block;
   background: #5a22dd;
@@ -551,20 +558,19 @@
   margin-bottom: 10px;
   box-shadow: 0 4px 10px rgba(90, 34, 221, 0.25);
 }
+
+/* Title */
 .instructions-title {
   font-size: 28px;
   font-weight: 700;
-  margin: 5px 0 15px 0;
+  margin: 0;
   color: #222;
 }
 
 .instructions-title span {
-  color: #5a22dd; /* Purple highlight */
+  color: #5a22dd;
 }
-.instructions-header {
-  margin-left: 20px;
-  margin-top: 10px;
-}
+
 
 
 
