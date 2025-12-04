@@ -127,10 +127,8 @@ export default function Teacher() {
       setPollId(newId);
       localStorage.setItem("pollId", newId);
 
-      // JOIN POLL AS TEACHER
       socket.emit("joinPoll", { pollId: newId, role: "teacher" });
 
-      // 🔥 FIX: STORE TEACHER USER ID
       localStorage.setItem("userId", socket.id);
       localStorage.setItem("role", "teacher");
 
@@ -150,7 +148,6 @@ export default function Teacher() {
     socket.emit("joinPoll", { pollId, role: "teacher" });
     localStorage.setItem("pollId", pollId);
 
-    // 🔥 FIX: STORE TEACHER USER ID
     localStorage.setItem("userId", socket.id);
     localStorage.setItem("role", "teacher");
 
@@ -191,10 +188,24 @@ export default function Teacher() {
         </button>
       </div>
 
+      {/* 🔥 INSTRUCTIONS CARD */}
+      <div className="instructions-card">
+        <h3>📘 How to Use</h3>
+        <ul>
+          <li>Step 1: Create a new poll → you will get a Poll ID</li>
+          <li>Step 2: Enter the Poll ID and join the poll</li>
+          <li>Step 3: Go to “Ask a new question” and add questions</li>
+          <li>Step 4: After adding questions, join the poll again</li>
+          <li>Step 5: Now the questions will appear in the list</li>
+          <li>Step 6: Click “Start Question” to begin the poll</li>
+        </ul>
+      </div>
+
       {/* ACTIVE QUESTION / RESULTS */}
       {activeQuestion ? (
         <>
           <QuestionCard question={activeQuestion} />
+
 
           <div className="end-btn-container">
             <button className="end-btn" onClick={endPollForEveryone}>
