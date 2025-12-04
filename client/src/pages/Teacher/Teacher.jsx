@@ -179,14 +179,7 @@ export default function Teacher() {
     <div className="teacher-container">
       
       {/* TOP RIGHT */}
-      <div className="top-right">
-        <button
-          className="history-btn"
-          onClick={() => navigate("/teacher/history")}
-        >
-          👁 View Poll history
-        </button>
-      </div>
+    
 
       {/* 🔥 INSTRUCTIONS CARD */}
       <div className="instructions-card">
